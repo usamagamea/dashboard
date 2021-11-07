@@ -11,7 +11,7 @@ export class DataService implements OnInit{
 url:string='https://route-egypt-api.herokuapp.com/'; 
 
   constructor(private _HttpClient:HttpClient , private _Router:Router ) {
-    this.saveCurrentUser();
+   
    }
 
   currentUser = new BehaviorSubject(null);
@@ -42,7 +42,7 @@ logout(){
 }
 
 ngOnInit(){
-  
+  this.saveCurrentUser();
 }
 }
 
