@@ -1,0 +1,59 @@
+
+<div class="contanier-fluid mt-5">
+    <h1 class="text-center">{{title}}</h1>
+
+
+
+<form class="w-75 m-auto" [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+    <div *ngIf='errorMessage' class="alert alert-danger">
+        <p>{{errorMessage}}</p>
+        </div>
+    <div class="form-group ">
+     <label >first name</label>
+     <input type="text" class="form-control" formControlName="first_name" minlength="5" >
+     <div class="alert my-2 alert-danger" *ngIf="registerForm.get('first_name')?.errors !=null && registerForm.get('first_name')?.touched">
+         <p *ngIf="firstName?.errors?.required">your first name is required</p>
+         <p *ngIf="firstName?.errors?.EnglishOnly"> English Only </p>
+          <p *ngIf="firstName?.errors?.minlength"> must have min 5 character </p> 
+     </div>
+    </div>
+
+    <div class="form-group">
+     <label >last name</label>
+ 
+  <input type="text" class="form-control" formControlName="last_name" minlength="3">
+  <div class="alert my-2 alert-danger" *ngIf="registerForm.get('last_name')?.errors !=null && registerForm.get('last_name')?.touched">
+    <p *ngIf="lastName?.errors?.required"> your last name is required </p>
+    <p *ngIf="lastName?.errors?.EnglishOnly"> English Only </p>
+    <p *ngIf="lastName?.errors?.minlength"> must have min 3 character </p> 
+
+   
+</div>
+
+    </div>
+
+    <div class="form-group">
+     <label >email :</label>
+     <input type="email" class="form-control" formControlName="email">
+     <div class="alert my-2 alert-danger" 
+     *ngIf="registerForm.get('email')?.errors !=null && registerForm.get('email')?.touched">
+        <p *ngIf="email?.errors?.required">your email  is required</p>
+        <p *ngIf="email?.errors?.email">your email  is invalid</p>
+      
+       
+
+    </div>
+    </div>
+
+    <div class="form-group">
+     <label >password :</label>
+     <input type="password" class="form-control" formControlName="password">
+     <div class="alert my-2 alert-danger" *ngIf="registerForm.get('password')?.errors !=null && registerForm.get('password')?.touched">
+        <p *ngIf="password?.errors?.required">your password  is required</p>
+        
+    </div>
+    </div>
+  
+    <button class="btn btn-primary w-100" type="submit" [disabled]="!registerForm.valid">sign up</button>
+</form>
+</div>

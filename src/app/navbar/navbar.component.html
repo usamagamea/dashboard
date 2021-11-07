@@ -1,0 +1,30 @@
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand text-info"> <span *ngIf="!isLogin"> Dashboard  </span>  <strong *ngIf="isLogin"> {{currentUser?.first_name + ' ' + currentUser?.last_name}} </strong>  </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" *ngIf="isLogin" (click)="setTitle('student list')" routerLink="lazy/list">Students
+            list</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isLogin" (click)="setTitle('student profile')" routerLink="lazy/profile">student
+            profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isLogin" (click)="setTitle('student view')" routerLink="lazy/view">student view</a>
+        </li>
+      </ul>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          Registration
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="nav-link" *ngIf="!isLogin" (click)="setTitle('log in')" routerLink="lazy/login"> Log In </a>
+          <a class="nav-link" *ngIf="!isLogin" (click)="setTitle('register')" routerLink="lazy/register"> Register </a>
+          <a class="nav-link" *ngIf="isLogin" (click)="isLogout()"> log out </a>
+        </div>
+      </li>
+    </div>
+  </nav>
+

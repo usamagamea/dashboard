@@ -1,0 +1,21 @@
+<h1 class="text-center">{{title}}</h1>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of modelList">
+        <th scope="row">{{list.id}}</th>
+        <td>{{list.firstName}}</td>
+        <td>{{list.lastName}}</td>
+        <td>{{list.Email}}</td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>

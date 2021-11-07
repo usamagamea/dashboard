@@ -1,0 +1,35 @@
+
+<div class="contanier-fluid mt-5">
+    <h1 class="text-center">{{title}}</h1>
+<form class="w-75 m-auto" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)">
+    <div *ngIf="errorMessage"
+     class="alert my-2 alert-danger">
+     {{errorMessage}}
+    </div>
+
+    <div class="form-group">
+     <label >email</label>
+     <input type="email" class="form-control" formControlName="email">
+     <div class="alert my-2 alert-danger" 
+     *ngIf="loginForm.get('email')?.errors !=null && loginForm.get('email')?.touched">
+        <p *ngIf="email?.errors?.required">your email  is required</p>
+        <p *ngIf="email?.errors?.email">your email  is invalid</p>
+      
+       
+
+    </div>
+    </div>
+
+    <div class="form-group">
+     <label >password</label>
+     <input type="password" class="form-control" formControlName="password">
+     <div class="alert my-2 alert-danger" *ngIf="loginForm.get('password')?.errors !=null && loginForm.get('password')?.touched">
+        <p *ngIf="password?.errors?.required">your password name is required</p>
+        
+    </div>
+    </div>
+  
+    <button class="btn btn-primary w-100" type="submit" [disabled]="!loginForm.valid"> Sign In</button>
+   
+</form>
+</div>
