@@ -20,12 +20,20 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-
+  shortname(){
+    if(this.currentUser){
+      return this.currentUser?.first_name.substring(0,5) + ' .' + this.currentUser?.last_name.substring(0,3);
+    }else{
+      return '';
+    }
+  }
 
 display(){
   this. _DataService.getCurrentUser().subscribe(
     data => {
-      this.currentUser = data;
+      if(data){
+        this.currentUser = data;
+      }
     },
     error => {
       console.log(error);
@@ -43,6 +51,8 @@ display(){
 
   ngOnInit() {
     this.titleService.setTitle('Navbar');
-    this.display();
+    setTimeout(() =>{ 
+      this.display();
+    }, 2000);
   }
 }

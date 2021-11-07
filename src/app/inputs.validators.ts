@@ -17,4 +17,13 @@ export class InputsValidators {
     return ENGLISH_REGEXP.test(control.value) ? null : { EnglishOnly: true };
   }
  
+  static phone(control: AbstractControl): ValidationErrors | null {
+    const PHONE_REGEXP = /^[0-9]{10}$/;
+    return PHONE_REGEXP.test(control.value) ? null : { phone: true };
+  }
+
+  static zip(control: AbstractControl): ValidationErrors | null {
+    const ZIP_REGEXP = /^[0-9]{5}$/;
+    return ZIP_REGEXP.test(control.value) ? null : { zip: true };
+  }
 }
