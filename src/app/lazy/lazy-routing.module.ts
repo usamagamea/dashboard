@@ -10,9 +10,9 @@ import { RegisterComponent } from '../register/register.component';
 
 
 const routes: Routes = [
-  {path:'' , redirectTo:'lazy/login' , pathMatch:'full'},
-{path:'login',canActivate:[AuthGuard]   , component:LoginComponent},
-{path:'register',canActivate:[AuthGuard] ,  component:RegisterComponent},
+  {path:'', component:LoginComponent},
+{path:'login', component:LoginComponent},
+{path:'register',  component:RegisterComponent},
 {path:'list' ,canActivate:[AuthGuard] , component:StudentsListComponent },
 {path:'profile' ,canActivate:[AuthGuard] ,component:StudentProfileComponent},
 {path:'view' ,canActivate:[AuthGuard] , component:StudentViewComponent}

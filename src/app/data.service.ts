@@ -11,7 +11,11 @@ export class DataService implements OnInit{
 url:string='https://route-egypt-api.herokuapp.com/'; 
 
   constructor(private _HttpClient:HttpClient , private _Router:Router ) {
-   
+
+    if(localStorage.getItem('token')){
+      this.saveCurrentUser();
+    }
+
    }
 
   currentUser = new BehaviorSubject(null);
