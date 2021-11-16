@@ -17,10 +17,10 @@ url:string='https://route-egypt-api.herokuapp.com/';
   currentUser = new BehaviorSubject(null);
 
   saveCurrentUser(){
-    if(localStorage.getItem('token')){
+    localStorage.getItem('token')
       let userToken:any = localStorage.getItem('token');
       this.currentUser.next(jwtDecode(userToken));  
-    }
+    
   }
 
   getCurrentUser(){

@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidationErrors } from "@angular/forms";
 
 export class InputsValidators {
  
@@ -12,18 +12,16 @@ export class InputsValidators {
     return PASSWORD_REGEXP.test(control.value) ? null : { password: true };
   }
 
+  static phone(control: AbstractControl): ValidationErrors | null {
+    const PHONE_REGEXP = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+    return PHONE_REGEXP.test(control.value) ? null : { phone: true };
+  }
+
+ 
+
   static EnglishOnly(control: AbstractControl): ValidationErrors | null {
     const ENGLISH_REGEXP = /^[a-zA-Z ]*$/;
     return ENGLISH_REGEXP.test(control.value) ? null : { EnglishOnly: true };
   }
- 
-  static phone(control: AbstractControl): ValidationErrors | null {
-    const PHONE_REGEXP = /^[0-9]{10}$/;
-    return PHONE_REGEXP.test(control.value) ? null : { phone: true };
-  }
-
-  static zip(control: AbstractControl): ValidationErrors | null {
-    const ZIP_REGEXP = /^[0-9]{5}$/;
-    return ZIP_REGEXP.test(control.value) ? null : { zip: true };
-  }
+  
 }

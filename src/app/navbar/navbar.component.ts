@@ -10,6 +10,7 @@ import { DataService } from '../data.service';
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
   currentUser: any = null;
+  title="dashboard"; 
 
   constructor(private titleService: Title, private _DataService: DataService) {
     _DataService.currentUser.subscribe(() => {
@@ -20,6 +21,8 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
+
+
   shortname(){
     if(this.currentUser){
       return this.currentUser?.first_name.substring(0,5) + ' .' + this.currentUser?.last_name.substring(0,3);
@@ -27,6 +30,15 @@ export class NavbarComponent implements OnInit {
       return '';
     }
   }
+
+  fullName(){
+     if(this.currentUser){
+        return this.currentUser?.first_name + ' ' + this.currentUser?.last_name;
+     }else{
+        return '';
+     }
+    } 
+
 
 display(){
   this. _DataService.getCurrentUser().subscribe(
@@ -49,10 +61,13 @@ display(){
     this.titleService.setTitle(newTitle);
   }
 
+  
   ngOnInit() {
-    this.titleService.setTitle('Navbar');
+    this.titleService.setTitle('Dashboard');
     setTimeout(() =>{ 
       this.display();
     }, 2000);
   }
+
+
 }
